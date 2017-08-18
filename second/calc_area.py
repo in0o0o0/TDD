@@ -1,2 +1,5 @@
+import math
+
+
 def calc_area(r):
-    pass
+    return round(r * r * math.pi)
