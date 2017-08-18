@@ -5,8 +5,8 @@ import re
 def atsign_checker(splitted_data):
     return splitted_data[-2] != ''
 
-def split_address(address):
-    return address.split('@')
+def split_address(address, character):
+    return address.split(character)
 
 def find_last_at(address):
     return address.rfind('@')
@@ -20,13 +20,27 @@ def domain_checker_d1(address):
 def domain_checker_d2(address):
     return not address.startswith(".")
 
+def domain_checker_d3(address):
+    return not address.endswith(".")
+
+def domain_checker_d4(splied_domain):
+    return not '' in splied_domain
+
+
 # def main():
 #
 #     split_number = find_last_at(address)
 #     local, domain = split_domain_local(address, split_number)
 
     # domain_part(domain)
+    # splied_domain = split_address(address, ".")
+    # domain_checker_d4(splied_domain)
+
+
     # local_part(local)
+
+
+
 
 '''
 def calc_area(r):
