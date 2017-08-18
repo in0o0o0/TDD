@@ -13,6 +13,7 @@ class Test_stack(unittest.TestCase):
 
     def test_push_and_top(self):
         stack = Stack()
+        stack.push(1)
         self.assertEqual(1, stack.top())
 
 
