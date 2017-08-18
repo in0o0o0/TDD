@@ -1,5 +1,6 @@
 import unittest
 from validate_addr_spec import atsign_checker,split_address, find_last_at, split_domain_local
+from validate_addr_spec import domain_checker_d1,domain_checker_d2
 
 class Test_calc_area(unittest.TestCase):
 
@@ -20,6 +21,13 @@ class Test_calc_area(unittest.TestCase):
     def test_split_domain_local(self):
         self.assertEqual(('abc@de', 'example.com'), split_domain_local('abc@de@example.com', 6))
 
+    def test_domain_checker_d1(self):
+        self.assertTrue(domain_checker_d1('example.com'))
+        self.assertFalse(domain_checker_d1('example.comああ'))
+
+    def test_domain_checker_d2(self):
+        self.assertTrue(domain_checker_d2('example.com'))
+        self.assertFalse(domain_checker_d2('.example.com'))
 
     '''
     def test_domain_part(self):

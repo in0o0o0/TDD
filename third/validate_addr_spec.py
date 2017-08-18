@@ -1,5 +1,6 @@
 import math
 import sys
+import re
 
 def atsign_checker(splitted_data):
     return splitted_data[-2] != ''
@@ -13,6 +14,11 @@ def find_last_at(address):
 def split_domain_local(address, split_number):
     return address[:split_number], address[split_number + 1:]
 
+def domain_checker_d1(address):
+    return re.match(r"^[a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+$",address)
+
+def domain_checker_d2(address):
+    return not address.startswith(".")
 
 # def main():
 #
