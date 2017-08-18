@@ -1,5 +1,5 @@
 import unittest
-from calc_area import calc_area,all_method
+from calc_area import calc_area,all_method, to_float
 
 class Test_calc_area(unittest.TestCase):
 
@@ -14,11 +14,16 @@ class Test_calc_area(unittest.TestCase):
         self.assertEqual(31416, calc_area(100))
         self.assertEqual(7, calc_area(1.5))
         self.assertEqual(314159265, calc_area(10000))
+        self.assertTrue(isinstance(calc_area(1.5), int))
 
     def test_all_method(self):
         io = IO_mock()
         all_method(io)
         self.assertEqual([314,196350,31416,7],io.result)
+
+    def test_to_float(self):
+        self.assertEqual([10.0, 250.0, 100.0, 1.5], to_float(["10\n", "250\n", "100\n", "1.5\n"]))
+
     '''
     def test_push_and_top(self):
         stack = Stack()
