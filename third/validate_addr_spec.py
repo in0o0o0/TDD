@@ -29,6 +29,14 @@ def checker_d4(splied_domain):
 def checker_d5(domain):
     return len(domain) > 0
 
+def checker_lq1(local):
+    return local.startswith('"')
+
+def checker_lq2(local):
+    return local.endswith('"')
+
+def strip_double_quotation(local):
+    return local[1:-1]
 
 # def main():
 #
@@ -38,6 +46,8 @@ def checker_d5(domain):
     # domain_part(domain)
     # splied_domain = split_address(address, ".")
     # domain_checker_d4(splied_domain)
+    # spritted_local = strip_double_quotation(local)
+    # checker_d1(spritted_local)
 
 
     # local_part(local)
