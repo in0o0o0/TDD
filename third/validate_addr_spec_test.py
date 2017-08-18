@@ -1,13 +1,21 @@
 import unittest
-from calc_area import calc_area,all_method, to_float
+from validate_addr_spec import atsign_checker,split_address
 
 class Test_calc_area(unittest.TestCase):
 
 
     # def set_up(self):
     #     stack = Stack()
+    def test_atsign_checker(self):
+        self.assertFalse(atsign_checker(['abc', 'de', '', 'example.com']))
+        self.assertTrue(atsign_checker(['abc', 'de', 'f', 'example.com']))
 
-    def test_calc_area(self):
+    def test_split_address(self):
+        self.assertEqual(['abc', 'de', '', 'example.com'], split_address("abc@de@@example.com"))
+        self.assertEqual(['abc', 'de', 'example.com'], split_address("abc@de@example.com"))
+
+    '''
+    def test_domain_part(self):
         self.assertEqual(3, calc_area(1))
         self.assertEqual(196350, calc_area(250))
         self.assertEqual(0, calc_area(0))
@@ -24,7 +32,7 @@ class Test_calc_area(unittest.TestCase):
     def test_to_float(self):
         self.assertEqual([10.0, 250.0, 100.0, 1.5], to_float(["10\n", "250\n", "100\n", "1.5\n"]))
 
-    '''
+
     def test_push_and_top(self):
         stack = Stack()
         stack.push(1)

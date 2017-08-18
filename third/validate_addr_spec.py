@@ -1,7 +1,13 @@
 import math
 import sys
 
+def atsign_checker(splitted_data):
+    return splitted_data[-2] != ''
 
+def split_address(address):
+    return address.split('@')
+
+'''
 def calc_area(r):
     return int(round(r * r * math.pi))
 
@@ -23,7 +29,7 @@ def all_method(io):
 def to_float(number):
     return map(float, number)
 
-
+'''
 class IO:
     def input_data(self):
         data = sys.stdin.readlines()
