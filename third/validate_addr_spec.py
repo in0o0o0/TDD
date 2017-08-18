@@ -7,6 +7,21 @@ def atsign_checker(splitted_data):
 def split_address(address):
     return address.split('@')
 
+def find_last_at(address):
+    return address.rfind('@')
+
+def split_domain_local(address, split_number):
+    return address[:split_number], address[split_number + 1:]
+
+
+# def main():
+#
+#     split_number = find_last_at(address)
+#     local, domain = split_domain_local(address, split_number)
+
+    # domain_part(domain)
+    # local_part(local)
+
 '''
 def calc_area(r):
     return int(round(r * r * math.pi))
