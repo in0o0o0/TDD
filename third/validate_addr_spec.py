@@ -38,19 +38,51 @@ def checker_lq2(local):
 def strip_double_quotation(local):
     return local[1:-1]
 
-# def main():
-#
-#     split_number = find_last_at(address)
-#     local, domain = split_domain_local(address, split_number)
+def checker_lq5(local):
+    return len(local) >= 2
 
-    # domain_part(domain)
-    # splied_domain = split_address(address, ".")
-    # domain_checker_d4(splied_domain)
-    # spritted_local = strip_double_quotation(local)
-    # checker_d1(spritted_local)
+def output_boolean(boo):
+    return 'ok' if boo else 'ng'
 
 
-    # local_part(local)
+def main(io):
+
+    addresses = io.input_data()
+    result_list = []
+
+    for address in addresses:
+
+        split_number = find_last_at(address)
+        local, domain = split_domain_local(address, split_number)
+
+        splitted_domain = split_address(domain, ".")
+        domain_boolean = all([checker_d1(domain), checker_d2(domain), checker_d3(domain),
+                             checker_d4(splitted_domain), checker_d5(domain)])
+
+        splitted_ld = split_address(local, ".")
+        ld_boolean = all([checker_d1(local), checker_d2(local), checker_d3(local),
+                         checker_d4(splitted_ld), checker_d5(local)])
+        splitted_lq = strip_double_quotation(local)
+        lq_boolean = all([checker_lq1(local), checker_lq2(local), checker_d1(splitted_lq), checker_lq5(local)])
+        local_boolean = ld_boolean or lq_boolean
+
+        splitted_data = split_address(address, '@')
+        address_boolean = all([atsign_checker(splitted_data), domain_boolean, local_boolean])
+
+        result_list.append(output_boolean(address_boolean))
+
+    io.output_data(result_list)
+
+
+class IO:
+    def input_data(self):
+        data = sys.stdin.readlines()
+        return data
+
+    def output_data(self,result):
+        for x in result:
+            print x
+
 
 
 
@@ -90,4 +122,4 @@ class IO:
 
 if __name__ == "__main__":
     io = IO()
-    all_method(io)
+    main(io)

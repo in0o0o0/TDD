@@ -1,7 +1,7 @@
 import unittest
 from validate_addr_spec import atsign_checker,split_address, find_last_at, split_domain_local
 from validate_addr_spec import checker_d1,checker_d2, checker_d3, checker_d4,checker_d5
-from validate_addr_spec import checker_lq1,checker_lq2,strip_double_quotation
+from validate_addr_spec import checker_lq1,checker_lq2,strip_double_quotation, checker_lq5, output_boolean
 
 class Test_calc_area(unittest.TestCase):
 
@@ -57,8 +57,14 @@ class Test_calc_area(unittest.TestCase):
     def test_strip_double_quotation(self):
         self.assertEqual('test',strip_double_quotation('"test"'))
 
+    def test_checker_lg5(self):
+        self.assertTrue(checker_lq5('""'))
+        self.assertTrue(checker_lq5('"abc"'))
+        self.assertFalse(checker_lq5('"'))
 
-
+    def test_output_boolean(self):
+        self.assertEqual('ok', output_boolean(True))
+        self.assertEqual('ng', output_boolean(False))
     #def test_local_checker_ld1(self):
 
 
