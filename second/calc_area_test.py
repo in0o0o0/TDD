@@ -8,7 +8,12 @@ class Test_calc_area(unittest.TestCase):
     #     stack = Stack()
 
     def test_calc_area(self):
-        self.assertEqual(3,calc_area(1))
+        self.assertEqual(3, calc_area(1))
+        self.assertEqual(196350, calc_area(250))
+        self.assertEqual(0, calc_area(0))
+        self.assertEqual(31416, calc_area(100))
+        self.assertEqual(7, calc_area(1.5))
+        self.assertEqual(314159265, calc_area(10000))
 
     '''
     def test_push_and_top(self):
