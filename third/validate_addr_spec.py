@@ -3,7 +3,7 @@ import sys
 import re
 
 def atsign_checker(splitted_data):
-    return splitted_data[-2] != ''
+    return len(splitted_data)>1 and splitted_data[-2] != ''
 
 def split_address(address, character):
     return address.split(character)
@@ -14,17 +14,20 @@ def find_last_at(address):
 def split_domain_local(address, split_number):
     return address[:split_number], address[split_number + 1:]
 
-def domain_checker_d1(address):
-    return re.match(r"^[a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+$",address)
+def checker_d1(domain):
+    return re.match(r"^[a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+$",domain)
 
-def domain_checker_d2(address):
-    return not address.startswith(".")
+def checker_d2(domain):
+    return not domain.startswith(".")
 
-def domain_checker_d3(address):
-    return not address.endswith(".")
+def checker_d3(domain):
+    return not domain.endswith(".")
 
-def domain_checker_d4(splied_domain):
+def checker_d4(splied_domain):
     return not '' in splied_domain
+
+def checker_d5(domain):
+    return len(domain) > 0
 
 
 # def main():

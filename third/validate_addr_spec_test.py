@@ -1,6 +1,6 @@
 import unittest
 from validate_addr_spec import atsign_checker,split_address, find_last_at, split_domain_local
-from validate_addr_spec import domain_checker_d1,domain_checker_d2, domain_checker_d3, domain_checker_d4
+from validate_addr_spec import checker_d1,checker_d2, checker_d3, checker_d4,checker_d5
 
 class Test_calc_area(unittest.TestCase):
 
@@ -10,10 +10,13 @@ class Test_calc_area(unittest.TestCase):
     def test_atsign_checker(self):
         self.assertFalse(atsign_checker(['abc', 'de', '', 'example.com']))
         self.assertTrue(atsign_checker(['abc', 'de', 'f', 'example.com']))
+        self.assertFalse(atsign_checker(['']))
+        self.assertFalse(atsign_checker(['aaaa']))
 
     def test_split_address(self):
         self.assertEqual(['abc', 'de', '', 'example.com'], split_address('abc@de@@example.com', '@'))
         self.assertEqual(['abc', 'de', 'example.com'], split_address('abc@de@example.com', '@'))
+        self.assertEqual(['abcexample.com'], split_address('abcexample.com', '@'))
 
     def test_find_last_at(self):
         self.assertEqual(6, find_last_at('abc@de@example.com'))
@@ -21,21 +24,29 @@ class Test_calc_area(unittest.TestCase):
     def test_split_domain_local(self):
         self.assertEqual(('abc@de', 'example.com'), split_domain_local('abc@de@example.com', 6))
 
-    def test_domain_checker_d1(self):
-        self.assertTrue(domain_checker_d1('example.com'))
-        self.assertFalse(domain_checker_d1('example.comああ'))
+    def test_checker_d1(self):
+        self.assertTrue(checker_d1('example.com'))
+        self.assertFalse(checker_d1('example.comああ'))
 
-    def test_domain_checker_d2(self):
-        self.assertTrue(domain_checker_d2('example.com'))
-        self.assertFalse(domain_checker_d2('.example.com'))
+    def test_checker_d2(self):
+        self.assertTrue(checker_d2('example.com'))
+        self.assertFalse(checker_d2('.example.com'))
 
-    def test_domain_checker_d3(self):
-        self.assertTrue(domain_checker_d3('example.com'))
-        self.assertFalse(domain_checker_d3('example.com.'))
+    def test_checker_d3(self):
+        self.assertTrue(checker_d3('example.com'))
+        self.assertFalse(checker_d3('example.com.'))
 
-    def test_domain_checker_d4(self):
-        self.assertTrue(domain_checker_d4(['example', 'com']))
-        self.assertFalse(domain_checker_d4(['example', '', 'com']))
+    def test_checker_d4(self):
+        self.assertTrue(checker_d4(['example', 'com']))
+        self.assertFalse(checker_d4(['example', '', 'com']))
+
+    def test_checker_d5(self):
+        self.assertTrue(checker_d5('example'))
+        self.assertFalse(checker_d5(''))
+        self.assertTrue(checker_d5('a'))
+
+
+    #def test_local_checker_ld1(self):
 
 
     '''
