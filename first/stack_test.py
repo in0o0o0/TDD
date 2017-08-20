@@ -3,10 +3,6 @@ from stack import Stack
 
 class Test_stack(unittest.TestCase):
 
-
-    # def set_up(self):
-    #     stack = Stack()
-
     def test_create(self):
         stack = Stack()
         self.assertTrue(stack.isEmpty())

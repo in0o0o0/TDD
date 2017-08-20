@@ -3,10 +3,6 @@ from calc_area import calc_area,all_method, to_float
 
 class Test_calc_area(unittest.TestCase):
 
-
-    # def set_up(self):
-    #     stack = Stack()
-
     def test_calc_area(self):
         self.assertEqual(3, calc_area(1))
         self.assertEqual(196350, calc_area(250))
@@ -23,13 +19,6 @@ class Test_calc_area(unittest.TestCase):
 
     def test_to_float(self):
         self.assertEqual([10.0, 250.0, 100.0, 1.5], to_float(["10\n", "250\n", "100\n", "1.5\n"]))
-
-    '''
-    def test_push_and_top(self):
-        stack = Stack()
-        stack.push(1)
-        self.assertEqual(1, stack.top())
-    '''
 
 class IO_mock:
     def input_data(self):

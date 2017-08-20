@@ -1,11 +1,8 @@
 import math
 import sys
 
-
 def calc_area(r):
     return int(round(r * r * math.pi))
-
-
 
 def all_method(io):
 
@@ -32,7 +29,6 @@ class IO:
     def output_data(self,result):
         for x in result:
             print x
-
 
 if __name__ == "__main__":
     io = IO()
